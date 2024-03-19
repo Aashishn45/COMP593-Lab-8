@@ -24,7 +24,7 @@ def create_relationships_table():
     """Creates the relationships table in the DB"""
     # TODO: Function body
     # Hint: See example code in lab instructions entitled "Add the Relationships Table"
-    con = sqlite3.connect('socail_network.db')
+    con = sqlite3.connect('social_network.db')
     cur = con.cursor()
 
     create_relationships_tble_query = """
