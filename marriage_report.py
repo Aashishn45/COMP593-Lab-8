@@ -32,9 +32,11 @@ def get_married_couples():
     cur = con.cursor()
 
     all_relationships_query = """
-        SELECT person1.name, person2.name, start_date, type FROM relationships
+        SELECT person1.name, person2.name, start_date FROM relationships
         JOIN people person1 ON person1_id = person1.id
-        JOIN people person2 ON person2_id = person2.id;
+        JOIN people person2 ON person2_id = person2.id
+        WHERE type = 'spouse';
+
 
     """
     cur.execute(all_relationships_query)
@@ -52,7 +54,8 @@ def save_married_couples_csv(married_couples, csv_path):
     """
     # TODO: Function body
     # Hint: We did this in Lab 7.
-    
+    df = pd.DataFrame(married_couples)
+    df.to_csv(csv_path, header=['Person 1', 'Person 2', 'Anniversary'], index=False)
     
     return
 
